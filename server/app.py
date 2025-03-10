@@ -132,32 +132,32 @@ class CoverLetterGenerator:
             # Prepare resume and job contents
             resume_text = str(self.resume)[:1000]  # Limit resume context
             
+            # Construct job postings string
+            job_postings = "\n\n".join([
+                f"### JOB POSTING {i+1} ###\n{content[:1000]}" 
+                for i, content in enumerate(job_contents_list)
+            ])
+            
             # Construct prompt with focused guidance
-            prompt = f"""
-            You are an expert career coach creating tailored cover letters.
-
-            Key Instructions:
-            - Extract ONLY the most relevant job requirements and responsibilities
-            - Focus on 3-4 core job attributes
-            - Highlight SPECIFIC matching skills from the resume
-            - Use a professional, concise tone
-            - Maximum 300 words per cover letter
-
-            Resume Highlights:
-            {resume_text}
-
-            Job Postings (Focus on Key Requirements):
-            {"\n\n".join([f"### JOB POSTING {i+1} ###\n{content[:1000]}" for i, content in enumerate(job_contents_list)])}
-
-            For each job, create a cover letter that directly addresses:
-            1. Why you're an exceptional fit
-            2. Specific skills matching job needs
-            3. Enthusiasm for the role/company
-
-            Format each cover letter with the marker:
-            ### COVER LETTER FOR JOB {1..n} ###
-            [Cover letter content]
-            """
+            prompt = (
+                "You are an expert career coach creating tailored cover letters.\n\n"
+                "Key Instructions:\n"
+                "- Extract ONLY the most relevant job requirements and responsibilities\n"
+                "- Focus on 3-4 core job attributes\n"
+                "- Highlight SPECIFIC matching skills from the resume\n"
+                "- Use a professional, concise tone\n"
+                "- Maximum 300 words per cover letter\n\n"
+                f"Resume Highlights:\n{resume_text}\n\n"
+                "Job Postings (Focus on Key Requirements):\n"
+                f"{job_postings}\n\n"
+                "For each job, create a cover letter that directly addresses:\n"
+                "1. Why you're an exceptional fit\n"
+                "2. Specific skills matching job needs\n"
+                "3. Enthusiasm for the role/company\n\n"
+                "Format each cover letter with the marker:\n"
+                "### COVER LETTER FOR JOB {number} ###\n"
+                "[Cover letter content]"
+            )
 
             # Prepare API request
             api_data = {
@@ -212,4 +212,77 @@ class CoverLetterGenerator:
             logger.error(f"Unexpected error in generate_multiple_cover_letters: {str(e)}")
             return ["Error: Unexpected error in generation"] * len(job_contents_list)
 
-    # Rest of the class remains the same as in the previous version
+    def process_job_links(self, excel_path, output_path, batch_size=5):
+        """Process job links in optimal batch sizes"""
+        try:
+            df = pd.read_excel(excel_path)
+            results = []
+            
+            # Calculate optimal batch size based on total jobs
+            total_jobs = len(df)
+            if total_jobs > 5:
+                logger.info("Large number of jobs detected, processing in smaller batches")
+                batch_size = 5  # Maximum 5 jobs per batch to stay within context window
+            
+            # Process jobs in batches
+            for i in range(0, total_jobs, batch_size):
+                batch_df = df[i:i+batch_size]
+                current_batch_size = len(batch_df)
+                logger.info(f"Processing batch {i//batch_size + 1} of {(total_jobs + batch_size - 1)//batch_size}")
+                logger.info(f"Batch size: {current_batch_size} jobs")
+                
+                # Scrape content for all jobs in batch
+                job_contents = []
+                job_urls = []
+                for _, row in batch_df.iterrows():
+                    url = row['job_link']
+                    content = self.scrape_job_content(url)
+                    job_contents.append(content)
+                    job_urls.append(url)
+                    time.sleep(2)  # Delay between scraping
+                
+                try:
+                    # Generate cover letters for batch
+                    cover_letters = self.generate_multiple_cover_letters(job_contents)
+                    
+                    # Store results
+                    for url, content, letter in zip(job_urls, job_contents, cover_letters):
+                        results.append({
+                            'job_link': url,
+                            'job_content': content,
+                            'cover_letter': letter
+                        })
+                    
+                    # Optional delay between batches if processing multiple batches
+                    if i + batch_size < len(df):
+                        time.sleep(5)
+                
+                except Exception as e:
+                    logger.error(f"Error processing batch: {str(e)}")
+                    # Add error entries for this batch
+                    for url, content in zip(job_urls, job_contents):
+                        results.append({
+                            'job_link': url,
+                            'job_content': content,
+                            'cover_letter': "Error generating cover letter"
+                        })
+            
+            # Save results
+            results_df = pd.DataFrame(results)
+            results_df.to_excel(output_path, index=False)
+            logger.info(f"Results saved to {output_path}")
+            
+            # Log summary
+            success_count = len([r for r in results if not r['cover_letter'].startswith("Error")])
+            logger.info(f"Successfully generated {success_count} out of {len(df)} cover letters")
+            
+        except Exception as e:
+            logger.error(f"Error in process_job_links: {str(e)}")
+            raise
+
+    def __del__(self):
+        """Clean up browser instance"""
+        try:
+            self.driver.quit()
+        except:
+            pass
