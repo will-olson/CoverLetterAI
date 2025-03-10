@@ -64,27 +64,38 @@ class CoverLetterGenerator:
             return "Error scraping job content"
 
     def generate_multiple_cover_letters(self, job_contents_list):
-        """Generate multiple cover letters in a single API request"""
+        """Generate multiple cover letters in a single API request with token management"""
         try:
             logger.info(f"Preparing to generate {len(job_contents_list)} cover letters")
             
-            # Validate input
-            if not job_contents_list or not isinstance(job_contents_list, list):
-                logger.error("Invalid job contents provided")
-                return ["Error: Invalid job content"] * (len(job_contents_list) if isinstance(job_contents_list, list) else 1)
-
-            # Format job contents with proper numbering
+            # Calculate approximate tokens (rough estimate: 1 token ≈ 4 characters)
+            TOKENS_PER_CHAR = 0.25
+            MAX_TOKENS = 7000  # Leave some buffer for the response
+            
+            # Calculate token estimates
+            resume_tokens = len(str(self.resume)) * TOKENS_PER_CHAR
+            instruction_tokens = 500  # Approximate tokens for system message and instructions
+            available_tokens = MAX_TOKENS - resume_tokens - instruction_tokens
+            
+            # Calculate tokens per job description
+            tokens_per_job = available_tokens / len(job_contents_list)
+            max_chars_per_job = int(tokens_per_job / TOKENS_PER_CHAR)
+            
+            logger.info(f"Estimated tokens per job: {tokens_per_job}")
+            
+            # Format job contents with proper numbering and length limits
             formatted_jobs = []
             for i, content in enumerate(job_contents_list, 1):
-                # Ensure content is string and limit length
-                content_str = str(content)[:2000]  # Convert to string and limit length
+                # Truncate content to fit token budget
+                content_str = str(content)[:max_chars_per_job]
                 formatted_jobs.append(f"### JOB POSTING {i} ###\n{content_str}")
 
             # Combine all job postings
             combined_jobs = "\n\n".join(formatted_jobs)
             
-            # Prepare resume
-            resume_text = str(self.resume)[:2000]  # Convert to string and limit length
+            # Prepare resume (truncated if needed)
+            resume_max_chars = int(2000 * TOKENS_PER_CHAR)  # Allow ~500 tokens for resume
+            resume_text = str(self.resume)[:resume_max_chars]
             
             # Construct prompt
             prompt = f"""
@@ -184,16 +195,24 @@ class CoverLetterGenerator:
             logger.error(f"Unexpected error in generate_multiple_cover_letters: {str(e)}")
             return ["Error: Unexpected error in generation"] * len(job_contents_list)
 
-    def process_job_links(self, excel_path, output_path, batch_size=3):
-        """Process job links in batches"""
+    def process_job_links(self, excel_path, output_path, batch_size=5):
+        """Process job links in optimal batch sizes"""
         try:
             df = pd.read_excel(excel_path)
             results = []
             
+            # Calculate optimal batch size based on total jobs
+            total_jobs = len(df)
+            if total_jobs > 5:
+                logger.info("Large number of jobs detected, processing in smaller batches")
+                batch_size = 5  # Maximum 5 jobs per batch to stay within context window
+            
             # Process jobs in batches
-            for i in range(0, len(df), batch_size):
+            for i in range(0, total_jobs, batch_size):
                 batch_df = df[i:i+batch_size]
-                logger.info(f"Processing batch {i//batch_size + 1}, jobs {i+1} to {min(i+batch_size, len(df))}")
+                current_batch_size = len(batch_df)
+                logger.info(f"Processing batch {i//batch_size + 1} of {(total_jobs + batch_size - 1)//batch_size}")
+                logger.info(f"Batch size: {current_batch_size} jobs")
                 
                 # Scrape content for all jobs in batch
                 job_contents = []
