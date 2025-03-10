@@ -1,0 +1,96 @@
+WILLIAM OLSON
+McLean, VA 22102  ▪  +1 (571) 244 0321  ▪  will.olson.b@gmail.com  ▪  linkedin.com/in/willolson ▪ github.com/will-olson
+PROFESSIONAL PROFILE
+Product manager with experience in growth-oriented roles across consumer packaged goods (CPG), health technology, and property technology. Recent graduate from Flatiron School’s Software Engineering Coding Bootcamp covering full-stack software development languages and frameworks including JavaScript, React, Python, SQL, and Flask. For my final project, I built an OpenAI-supported Career Assistant web application that incorporates external API data from The World Bank, News API, and Alpha Vantage.
+
+Featured Work: Flatiron Blog  ▪  Deployed React Web Application  ▪  OpenAI Career Assistant Loom Walkthrough
+Strategy:
+Growth
+Market entry
+Competitive
+Regulatory
+Operations and supply chain
+Enterprise partnerships
+
+Marketing Disciplines:
+Brand management
+International marketing
+Integrated marketing
+Paid media
+Product marketing
+Lifecycle (CRM)
+
+NEWSCORP, REALTOR.COM, Austin, TX	10/2022 – 08/2024
+Product Manager - Avail (02/2024 – 08/2024)
+Following Zillow deal and resultant reorganization, rejoined Avail as product manager leading product and lifecycle marketing.
+Segmented customer base by unit size, region, acquisition channel, and campaign to support sentiment improvement and product experience and revenue tactics personalization.
+Executed Trustpilot email campaign, driving more landlord review volume and doubling rating score in less than three months.
+Launched in-product survey on landlord and software knowledge, revealing largely consistent ratings across regions and unit sizes.
+Product Manager, Customer Relationship Management (CRM) (05/2023 – 02/2024)
+Focused on improving post-sign-up experience for renters with more useful features, personalized communications, and insightful content.
+Led CRM launch of “Schedule a Tour” and “Request a Tour,” across post-lead and native consumer experience product squads.
+Launched “Schedule a Tour” on all Avail property listings and one external listing partner, developed a strategic roadmap to support more than 10 listing partners.
+Manager, Product and Lifecycle Marketing - Avail  (10/2022 – 05/2023)
+Managed a team of four product and lifecycle marketers focused on Avail, a property management platform that enables landlords to manage property listings across sites, screen tenants, create and sign leases, and track rental income and expenses.
+Led development of strategic priorities for product and lifecycle marketers to ensure product roadmap and OKR alignment.
+Drove origination of seasonality , competitive, and audience analyses. Resulted in revenue-driving “Rent Report Analysis” test.
+Oversaw First-Time-Home-Buyer testing to analyze the rent-to-own journey. Found purchase intent largely correlated to lease cycle along with high engagement rates among aged tenant leads in the Avail database. Significant interest in credit-repair services.
+
+SMILEDIRECTCLUB, Nashville, TN	10/2019 – 07/2022
+Manager, Paid Media Strategy (01/2022 – 07/2022)
+Responsible for oral care products strategy and marketing performance across channels.
+Directly managed Paid Social and collaborated with account teams, channel leads, and cross-functional team to optimize investment allocation across Paid Digital, Offline, and Amazon.
+Presented updates and performance reporting to executive leadership and ownership weekly to discuss potential optimizations.
+International Marketing Manager (02/2021 – 01/2022)
+Collaborated across the organization to drive international revenue growth and new market entries.
+Led strategy summits in Germany and Spain to establish key business objectives and strategic priorities in collaboration with in-market teams, aligned with leadership to execute against plans.
+Launched innovative partnership with Uber designed to boost impression kit return rates. Consulted with MAC Cosmetics (Esteé Lauder) to inform consumer journey benchmarking.
+Launched testing in four US cities selected based on key metrics. Devised plans to scale to an additional 15 cities and the UK.
+Restructured international marketing meetings to facilitate executive engagement and accelerate global strategy optimization.
+Led global integrated marketing campaigns, adapting US brand pillars for local markets, while managing international marketing specialist and international marketing intern.
+
+International Marketing Specialist (10/2019 – 02/2021)
+First international marketing team hire following IPO to drive new market entries in collaboration with US organization and in-market teams
+Developed competitive and media landscape analyses to inform global expansion strategy and regional growth marketing efforts.
+Localized strategy and tactics given significant consumer persona, competitive landscape, and regulatory variance across markets.
+Launched and managed Snapchat in United Kingdom and Ireland, driving over $350K in efficient marketing spend.
+Performed extensive work within Smartly and Facebook Ads in collaboration with paid media and influencer teams.
+
+ALTRIA GROUP, U.S. SMOKELESS TOBACCO, Richmond, VA	07/2018 – 08/2019
+Brand Analyst, Copenhagen (07/2018 – 08/2019)
+Responsible for development and execution of Copenhagen’s equity and promotions strategy aligned to annual brand plan and U.S. Smokeless product portfolio strategy. Served as project lead on The Original Snuff Shop, Copenhagen’s flagship store.
+Executed charitable giving promotion that resulted in over $1M in donations to over 20 organizations. Organizations selected included Team Rubicon, Farm Rescue, and American Rivers to align with the Copenhagen brand and consumer values.
+Opened The Original Snuff Shop in Nashville, TN in May 2019. This flagship store concept was the first physical manifestation of its kind and allowed the business to test a variety of concepts while gleaning faster insights.
+Brand Management Intern, Copenhagen (07/2017 – 08/2017)
+Completed new product launch project, including identification of key test markets, marketing strategy development, and a pricing analysis. Accepted return offer to begin full-time following graduation.
+
+EDUCATION
+
+Bachelor of Arts, Public Policy and Leadership, UNIVERSITY OF VIRGINIA - Frank Batten School of Leadership and Public Policy (2018)
+Minor: Social Entrepreneurship | Relevant coursework: Strategic Consulting, Research and Data Analysis, Financial Accounting
+
+PROFESSIONAL DEVELOPMENT
+
+Software Engineering Certification, FLATIRON SCHOOL (2024 – 2025)
+Coursework covering JavaScript, React, Python, SQL, and Flask. Using OpenAI’s API, developed a personalized Career Assistant application. 
+
+Product Marketing Core Certification, PRODUCT MARKETING ALLIANCE (2022)
+Modules included Research, Pricing, OKRs, Personas, Product Positioning and Messaging, Go-to-Market (GTM) Strategy, Communication, Sales Enablement, Onboarding, and Analysis and Optimization.
+
+TPH Investment Banking Bootcamp, TUDOR, PICKERING, HOLT, & CO., (2016)
+Received instruction in corporate finance, financial analysis & valuation methodology, and energy-specific analysis tools.
+
+Social Entrepreneurship and Consulting in Dominica, UNIVERSITY OF VIRGINIA, DOMINICA (2016)
+Provided Big G’s Pepper Sauce with social-impact driven recommendations concerning supply chain and marketing strategy.
+Engaged with policymakers to gain cultural insights and greater understanding of the entrepreneurial policy landscape.
+
+Accelerator Summer Business Institute, VANDERBILT UNIVERSITY OWEN GRADUATE SCHOOL OF MANAGEMENT (2015)
+Consulted within two project teams on five projects for Wrigley, Dollar General, Emma, Haven, and SportsGeo while receiving instruction in management, marketing, strategy, finance, operations, teamwork, and economics.
+
+PLATFORMS
+
+Appcues, Iterable, Mixpanel, Miro, Figma, Airtable, Confluence, Jira, Meta Ads, Snapchat Ads, Smartly, Looker, Heap
+
+SKILLS
+
+Spanish (fluent, business proficient), Python, SQL, JavaScript, Flask, React, growth strategy, product strategy, product development, product design, product vision, product positioning, product analytics, product adoption, feature prioritization, agile, sprint planning, go-to-market strategies, scoping business requirements & technical specifications, project management, e-commerce, data analysis, analytics tools, market research, brand strategy, campaign development, outbound marketing, advertising, lifecycle marketing, customer retention, personalization, innovation, leadership
